@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Rolsa Technologies</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact-us.html">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.html">Account</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+                <button id="themeToggle" class="btn btn-outline-dark ms-2">
+                    <i class="bi bi-moon-fill dark-icon"></i>
+                    <i class="bi bi-sun-fill light-icon d-none"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator - Rolsa Technologies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --accent-color: #16a085;
+            --gradient-1: linear-gradient(135deg, #2ecc71, #27ae60);
+            --gradient-2: linear-gradient(135deg, #27ae60, #16a085);
+        }
+
+        .calculator-card {
+            transition: all 0.3s ease;
+            border: none;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            background: var(--gradient-1);
+            color: white !important;
+            border: none;
+            padding: 1.2rem;
+        }
+
+        .result-card .card-header {
+            background: var(--gradient-2);
+        }
+
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .btn-calculate {
+            background: var(--gradient-1);
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(46, 204, 113, 0.25);
+        }
+
+        .eco-tip {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .impact-level {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .impact-low {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .impact-medium {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
+        }
+
+        .impact-high {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Carbon Footprint Calculator</h1>
+        <p class="text-center mb-5">Calculate your environmental impact and learn how to reduce your carbon footprint</p>
+
+        <div class="row">
+            <!-- Transportation Section -->
+            <div class="col-md-6">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Transportation</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="transportForm">
+                            <div class="mb-3">
+                                <label class="form-label">Car Travel (km/week)</label>
+                                <input type="number" class="form-control" id="carTravel" value="0" min="0">
+                                <div class="eco-tip">Tip: Consider carpooling or using public transport to reduce emissions</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Flights per Year</label>
+                                <input type="number" class="form-control" id="flights" value="0" min="0">
+                                <div class="eco-tip">Tip: Choose direct flights when possible to minimize emissions</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Energy Section -->
+            <div class="col-md-6">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Home Energy</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="energyForm">
+                            <div class="mb-3">
+                                <label class="form-label">Monthly Electricity Usage (kWh)</label>
+                                <input type="number" class="form-control" id="electricity" value="0" min="0">
+                                <div class="eco-tip">Tip: Use LED bulbs and energy-efficient appliances</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Monthly Gas Usage (m³)</label>
+                                <input type="number" class="form-control" id="gas" value="0" min="0">
+                                <div class="eco-tip">Tip: Improve home insulation to reduce heating needs</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lifestyle Section -->
+            <div class="col-md-6">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Lifestyle</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="lifestyleForm">
+                            <div class="mb-3">
+                                <label class="form-label">Meat Consumption (meals/week)</label>
+                                <input type="number" class="form-control" id="meat" value="0" min="0">
+                                <div class="eco-tip">Tip: Consider having meat-free days</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Recycling Percentage</label>
+                                <input type="number" class="form-control" id="recycling" value="0" min="0" max="100">
+                                <div class="eco-tip">Tip: Aim to recycle more than 50% of your waste</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="col-md-6">
+                <div class="card calculator-card result-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Your Carbon Footprint</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h3 class="mb-4">Annual CO₂ Emissions</h3>
+                        <div class="result mb-3">0 tonnes CO₂e</div>
+                        <div id="impactLevel" class="impact-level impact-low">Low Impact</div>
+                        <button onclick="calculateFootprint()" class="btn btn-calculate w-100 mt-4">Calculate Impact</button>
+                        <div id="recommendations" class="mt-4 text-start">
+                            <h5>Recommendations:</h5>
+                            <ul class="recommendations-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateFootprint() {
+            // Get input values
+            const carTravel = parseFloat(document.getElementById('carTravel').value) || 0;
+            const flights = parseFloat(document.getElementById('flights').value) || 0;
+            const electricity = parseFloat(document.getElementById('electricity').value) || 0;
+            const gas = parseFloat(document.getElementById('gas').value) || 0;
+            const meat = parseFloat(document.getElementById('meat').value) || 0;
+            const recycling = parseFloat(document.getElementById('recycling').value) || 0;
+
+            // Calculate emissions (simplified calculations)
+            const carEmissions = carTravel * 52 * 0.2; // 0.2 kg CO2 per km
+            const flightEmissions = flights * 1000; // 1 tonne per flight (average)
+            const electricityEmissions = electricity * 12 * 0.5; // 0.5 kg CO2 per kWh
+            const gasEmissions = gas * 12 * 2; // 2 kg CO2 per m³
+            const meatEmissions = meat * 52 * 5; // 5 kg CO2 per meat meal
+            const recyclingReduction = recycling * 10; // 10 kg reduction per % recycled
+
+            // Calculate total emissions
+            const totalEmissions = (carEmissions + flightEmissions + electricityEmissions + 
+                                  gasEmissions + meatEmissions - recyclingReduction) / 1000; // Convert to tonnes
+
+            // Update result
+            document.querySelector('.result').textContent = `${totalEmissions.toFixed(2)} tonnes CO₂e`;
+
+            // Determine impact level
+            const impactLevel = document.getElementById('impactLevel');
+            if (totalEmissions < 5) {
+                impactLevel.className = 'impact-level impact-low';
+                impactLevel.textContent = 'Low Impact';
+            } else if (totalEmissions < 10) {
+                impactLevel.className = 'impact-level impact-medium';
+                impactLevel.textContent = 'Medium Impact';
+            } else {
+                impactLevel.className = 'impact-level impact-high';
+                impactLevel.textContent = 'High Impact';
+            }
+
+            // Generate recommendations
+            const recommendationsList = document.querySelector('.recommendations-list');
+            recommendationsList.innerHTML = '';
+            
+            if (carTravel > 100) {
+                addRecommendation('Consider using public transport or carpooling to reduce car emissions');
+            }
+            if (flights > 5) {
+                addRecommendation('Try to combine trips or use video conferencing when possible');
+            }
+            if (electricity > 300) {
+                addRecommendation('Switch to energy-efficient appliances and LED lighting');
+            }
+            if (meat > 10) {
+                addRecommendation('Consider reducing meat consumption and trying plant-based alternatives');
+            }
+            if (recycling < 50) {
+                addRecommendation('Increase your recycling efforts to reduce waste impact');
+            }
+        }
+
+        function addRecommendation(text) {
+            const li = document.createElement('li');
+            li.textContent = text;
+            document.querySelector('.recommendations-list').appendChild(li);
+        }
+    </script>
+</body>
+</html>
+    
+    
+    
+    
+    
+    
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>Rolsa Technologies</h5>
+                    <p class="mb-0">Upcoming businesses with sustainable solutions for a better tomorrow.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="About-us.html" class="text-light text-decoration-none">About Us</a></li>
+                        <li><a href="Contact-us.html" class="text-light text-decoration-none">Contact</a></li>
+                        <li><a href="Pricing.html" class="text-light text-decoration-none">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Connect With Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="https://www.facebook.com/profile.php?id=61574443752896" class="text-light"><i class="bi bi-facebook"></i></a>
+                        <a href="https://x.com/Rolsa_Tech" class="text-light"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/rolsa-technologies-b1579b296/" class="text-light"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.instagram.com/rolsa_technologies/" class="text-light"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('themeToggle');
+            const darkIcon = themeToggle.querySelector('.dark-icon');
+            const lightIcon = themeToggle.querySelector('.light-icon');
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                darkIcon.classList.add('d-none');
+                lightIcon.classList.remove('d-none');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                darkIcon.classList.toggle('d-none');
+                lightIcon.classList.toggle('d-none');
+                
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            });
+        });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</body>
+</html>

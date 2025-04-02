@@ -2,16 +2,14 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "users.db";
+$db = "users";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname); 
+$conn = mysqli_connect($servername, $username, $password, $db); 
 
 if($conn->connect_error){
-    die("Connection failed: " . $conn->connect_error);  
+    echo("Failed to connect to DB".$conn->connect_error);  
 }
 else {
     echo "Connected successfully";
 }
 ?>
-
-localhost/xampp/version 3/db.php
