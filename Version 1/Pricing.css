@@ -1,0 +1,32 @@
+body.dark-mode {
+    background-color: #212529;
+    color: #fff;
+}
+
+body.dark-mode .navbar {
+    background-color: #343a40 !important;
+}
+
+body.dark-mode .navbar-light .navbar-brand,
+body.dark-mode .navbar-light .nav-link {
+    color: #fff !important;
+}
+
+body.dark-mode .card {
+    background-color: #343a40;
+    color: #fff;
+}
+
+body.dark-mode .btn-outline-dark {
+    color: #fff;
+    border-color: #fff;
+}
+
+body.dark-mode .btn-outline-dark:hover {
+    color: #212529;
+    background-color: #fff;
+}
+
+.dark-icon, .light-icon {
+    font-size: 1.2rem;
+}
