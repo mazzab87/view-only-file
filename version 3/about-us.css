@@ -1,0 +1,132 @@
+body.dark-mode {
+    background-color: #212529;
+    color: #fff;
+}
+
+body.dark-mode .navbar {
+    background-color: #343a40 !important;
+}
+
+body.dark-mode .navbar-light .navbar-brand,
+body.dark-mode .navbar-light .nav-link {
+    color: #fff !important;
+}
+
+body.dark-mode .card {
+    background-color: #343a40;
+    color: #fff;
+}
+
+body.dark-mode .btn-outline-dark {
+    color: #fff;
+    border-color: #fff;
+}
+
+body.dark-mode .btn-outline-dark:hover {
+    color: #212529;
+    background-color: #fff;
+}
+
+.dark-icon, .light-icon {
+    font-size: 1.2rem;
+}
+
+:root {
+    --primary-color: #6800fa;
+    --text-color: #2d3142;
+    --background-color: #ffffff;
+    --section-spacing: 6rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.card {
+    border: none;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+.img-fluid {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+    }
+}
+
+footer {
+    background-color: #212529;
+    color: #ffffff;
+}
+
+footer h5,
+footer p,
+footer a,
+footer .text-light,
+footer .text-decoration-none {
+    color: #ffffff !important;
+}
+
+footer hr {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+footer .social-links a {
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+}
+
+footer .social-links a:hover {
+    opacity: 0.8;
+}
+
+body.dark-mode footer {
+    background-color: #343a40;
+} 

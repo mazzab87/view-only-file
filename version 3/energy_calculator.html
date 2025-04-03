@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Calculator - Rolsa Technologies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --success-color: #4cc9f0;
+            --warning-color: #f72585;
+            --gradient-1: linear-gradient(135deg, #4361ee, #3a0ca3);
+            --gradient-2: linear-gradient(135deg, #4cc9f0, #4361ee);
+            --gradient-3: linear-gradient(135deg, #7209b7, #3a0ca3);
+            --gradient-4: linear-gradient(135deg, #f72585, #7209b7);
+        }
+
+        .calculator-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            overflow: hidden;
+        }
+
+        .calculator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background: var(--gradient-1);
+            color: white !important;
+            border: none;
+            padding: 1.2rem;
+        }
+
+        .calculator-card:nth-child(2) .card-header {
+            background: var(--gradient-2);
+        }
+
+        .calculator-card:nth-child(3) .card-header {
+            background: var(--gradient-3);
+        }
+
+        .calculator-card:nth-child(4) .card-header {
+            background: var(--gradient-4);
+        }
+
+        .result {
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: -webkit-linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 0.5rem 0;
+        }
+
+        .btn-calculate {
+            background: var(--gradient-1);
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .calculator-card:nth-child(2) .btn-calculate {
+            background: var(--gradient-2);
+        }
+
+        .calculator-card:nth-child(3) .btn-calculate {
+            background: var(--gradient-3);
+        }
+
+        .calculator-card:nth-child(4) .btn-calculate {
+            background: var(--gradient-4);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Energy Calculator</h1>
+        
+        <div class="row">
+            <!-- Kinetic Energy Calculator -->
+            <div class="col-md-6 mb-4">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Kinetic Energy Calculator</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="kineticForm">
+                            <div class="mb-3">
+                                <label for="mass" class="form-label">Mass (kg)</label>
+                                <input type="number" class="form-control" id="mass" step="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="velocity" class="form-label">Velocity (m/s)</label>
+                                <input type="number" class="form-control" id="velocity" step="0.01" required>
+                            </div>
+                            <button type="submit" class="btn btn-calculate w-100">Calculate</button>
+                            <div class="mt-3">
+                                <p>Kinetic Energy: <span id="kineticResult" class="result">0 Joules</span></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Potential Energy Calculator -->
+            <div class="col-md-6 mb-4">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Potential Energy Calculator</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="potentialForm">
+                            <div class="mb-3">
+                                <label for="mass2" class="form-label">Mass (kg)</label>
+                                <input type="number" class="form-control" id="mass2" step="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="height" class="form-label">Height (m)</label>
+                                <input type="number" class="form-control" id="height" step="0.01" required>
+                            </div>
+                            <button type="submit" class="btn btn-calculate w-100">Calculate</button>
+                            <div class="mt-3">
+                                <p>Potential Energy: <span id="potentialResult" class="result">0 Joules</span></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Energy Calculator -->
+            <div class="col-md-6 mb-4">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Work Energy Calculator</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="workForm">
+                            <div class="mb-3">
+                                <label for="force" class="form-label">Force (N)</label>
+                                <input type="number" class="form-control" id="force" step="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="distance" class="form-label">Distance (m)</label>
+                                <input type="number" class="form-control" id="distance" step="0.01" required>
+                            </div>
+                            <button type="submit" class="btn btn-calculate w-100">Calculate</button>
+                            <div class="mt-3">
+                                <p>Work Done: <span id="workResult" class="result">0 Joules</span></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elastic Potential Energy Calculator -->
+            <div class="col-md-6 mb-4">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Elastic Potential Energy</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="elasticForm">
+                            <div class="mb-3">
+                                <label for="springConstant" class="form-label">Spring Constant (N/m)</label>
+                                <input type="number" class="form-control" id="springConstant" step="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="displacement" class="form-label">Displacement (m)</label>
+                                <input type="number" class="form-control" id="displacement" step="0.01" required>
+                            </div>
+                            <button type="submit" class="btn btn-calculate w-100">Calculate</button>
+                            <div class="mt-3">
+                                <p>Elastic Potential Energy: <span id="elasticResult" class="result">0 Joules</span></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Your existing JavaScript code remains unchanged
+        // Constants
+        const GRAVITY = 9.81; // m/s²
+
+        // Kinetic Energy Calculator
+        document.getElementById('kineticForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const mass = parseFloat(document.getElementById('mass').value);
+            const velocity = parseFloat(document.getElementById('velocity').value);
+            const kineticEnergy = 0.5 * mass * velocity * velocity;
+            document.getElementById('kineticResult').textContent = `${kineticEnergy.toFixed(2)} Joules`;
+        });
+
+        // Potential Energy Calculator
+        document.getElementById('potentialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const mass = parseFloat(document.getElementById('mass2').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const potentialEnergy = mass * GRAVITY * height;
+            document.getElementById('potentialResult').textContent = `${potentialEnergy.toFixed(2)} Joules`;
+        });
+
+        // Work Energy Calculator
+        document.getElementById('workForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const force = parseFloat(document.getElementById('force').value);
+            const distance = parseFloat(document.getElementById('distance').value);
+            const workEnergy = force * distance;
+            document.getElementById('workResult').textContent = `${workEnergy.toFixed(2)} Joules`;
+        });
+
+        // Elastic Potential Energy Calculator
+        document.getElementById('elasticForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const springConstant = parseFloat(document.getElementById('springConstant').value);
+            const displacement = parseFloat(document.getElementById('displacement').value);
+            const elasticEnergy = 0.5 * springConstant * displacement * displacement;
+            document.getElementById('elasticResult').textContent = `${elasticEnergy.toFixed(2)} Joules`;
+        });
+    </script>
+</body>
+</html> 

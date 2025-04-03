@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator - Rolsa Technologies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #7209b7;
+            --gradient-1: linear-gradient(135deg, #4361ee, #3a0ca3);
+            --gradient-2: linear-gradient(135deg, #7209b7, #3a0ca3);
+            --gradient-3: linear-gradient(135deg, #f72585, #7209b7);
+            --gradient-4: linear-gradient(135deg, #4cc9f0, #4361ee);
+        }
+
+        .calculator-card {
+            transition: all 0.3s ease;
+            border: none;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .calculator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            background: var(--gradient-1);
+            color: white !important;
+            border: none;
+            padding: 1.2rem;
+        }
+
+        /* Different gradients for each card */
+        .calculator-card:nth-child(2) .card-header {
+            background: var(--gradient-2);
+        }
+
+        .calculator-card:nth-child(3) .card-header {
+            background: var(--gradient-3);
+        }
+
+        .result-card .card-header {
+            background: var(--gradient-4);
+        }
+
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: -webkit-linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-calculate {
+            background: var(--gradient-4);
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+        }
+
+        .eco-tip {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .impact-level {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .impact-low {
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            color: white;
+        }
+
+        .impact-medium {
+            background: linear-gradient(135deg, #7209b7, #3a0ca3);
+            color: white;
+        }
+
+        .impact-high {
+            background: linear-gradient(135deg, #f72585, #7209b7);
+            color: white;
+        }
+
+        .recommendations-list li {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Carbon Footprint Calculator</h1>
+        <p class="text-center mb-5">Calculate your environmental impact and learn how to reduce your carbon footprint</p>
+
+        <div class="row">
+            <!-- Transportation Section -->
+            <div class="col-md-6">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Transportation</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="transportForm">
+                            <div class="mb-3">
+                                <label class="form-label">Car Travel (km/week)</label>
+                                <input type="number" class="form-control" id="carTravel" value="0" min="0">
+                                <div class="eco-tip">Tip: Consider carpooling or using public transport to reduce emissions</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Flights per Year</label>
+                                <input type="number" class="form-control" id="flights" value="0" min="0">
+                                <div class="eco-tip">Tip: Choose direct flights when possible to minimize emissions</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Energy Section -->
+            <div class="col-md-6">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Home Energy</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="energyForm">
+                            <div class="mb-3">
+                                <label class="form-label">Monthly Electricity Usage (kWh)</label>
+                                <input type="number" class="form-control" id="electricity" value="0" min="0">
+                                <div class="eco-tip">Tip: Use LED bulbs and energy-efficient appliances</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Monthly Gas Usage (m³)</label>
+                                <input type="number" class="form-control" id="gas" value="0" min="0">
+                                <div class="eco-tip">Tip: Improve home insulation to reduce heating needs</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lifestyle Section -->
+            <div class="col-md-6">
+                <div class="card calculator-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Lifestyle</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="lifestyleForm">
+                            <div class="mb-3">
+                                <label class="form-label">Meat Consumption (meals/week)</label>
+                                <input type="number" class="form-control" id="meat" value="0" min="0">
+                                <div class="eco-tip">Tip: Consider having meat-free days</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Recycling Percentage</label>
+                                <input type="number" class="form-control" id="recycling" value="0" min="0" max="100">
+                                <div class="eco-tip">Tip: Aim to recycle more than 50% of your waste</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="col-md-6">
+                <div class="card calculator-card result-card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Your Carbon Footprint</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h3 class="mb-4">Annual CO₂ Emissions</h3>
+                        <div class="result mb-3">0 tonnes CO₂e</div>
+                        <div id="impactLevel" class="impact-level impact-low">Low Impact</div>
+                        <button onclick="calculateFootprint()" class="btn btn-calculate w-100 mt-4">Calculate Impact</button>
+                        <div id="recommendations" class="mt-4 text-start">
+                            <h5>Recommendations:</h5>
+                            <ul class="recommendations-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateFootprint() {
+            // Get input values
+            const carTravel = parseFloat(document.getElementById('carTravel').value) || 0;
+            const flights = parseFloat(document.getElementById('flights').value) || 0;
+            const electricity = parseFloat(document.getElementById('electricity').value) || 0;
+            const gas = parseFloat(document.getElementById('gas').value) || 0;
+            const meat = parseFloat(document.getElementById('meat').value) || 0;
+            const recycling = parseFloat(document.getElementById('recycling').value) || 0;
+
+            // Calculate emissions (simplified calculations)
+            const carEmissions = carTravel * 52 * 0.2; // 0.2 kg CO2 per km
+            const flightEmissions = flights * 1000; // 1 tonne per flight (average)
+            const electricityEmissions = electricity * 12 * 0.5; // 0.5 kg CO2 per kWh
+            const gasEmissions = gas * 12 * 2; // 2 kg CO2 per m³
+            const meatEmissions = meat * 52 * 5; // 5 kg CO2 per meat meal
+            const recyclingReduction = recycling * 10; // 10 kg reduction per % recycled
+
+            // Calculate total emissions
+            const totalEmissions = (carEmissions + flightEmissions + electricityEmissions + 
+                                  gasEmissions + meatEmissions - recyclingReduction) / 1000; // Convert to tonnes
+
+            // Update result
+            document.querySelector('.result').textContent = `${totalEmissions.toFixed(2)} tonnes CO₂e`;
+
+            // Determine impact level
+            const impactLevel = document.getElementById('impactLevel');
+            if (totalEmissions < 5) {
+                impactLevel.className = 'impact-level impact-low';
+                impactLevel.textContent = 'Low Impact';
+            } else if (totalEmissions < 10) {
+                impactLevel.className = 'impact-level impact-medium';
+                impactLevel.textContent = 'Medium Impact';
+            } else {
+                impactLevel.className = 'impact-level impact-high';
+                impactLevel.textContent = 'High Impact';
+            }
+
+            // Generate recommendations
+            const recommendationsList = document.querySelector('.recommendations-list');
+            recommendationsList.innerHTML = '';
+            
+            if (carTravel > 100) {
+                addRecommendation('Consider using public transport or carpooling to reduce car emissions');
+            }
+            if (flights > 5) {
+                addRecommendation('Try to combine trips or use video conferencing when possible');
+            }
+            if (electricity > 300) {
+                addRecommendation('Switch to energy-efficient appliances and LED lighting');
+            }
+            if (meat > 10) {
+                addRecommendation('Consider reducing meat consumption and trying plant-based alternatives');
+            }
+            if (recycling < 50) {
+                addRecommendation('Increase your recycling efforts to reduce waste impact');
+            }
+        }
+
+        function addRecommendation(text) {
+            const li = document.createElement('li');
+            li.textContent = text;
+            document.querySelector('.recommendations-list').appendChild(li);
+        }
+    </script>
+</body>
+</html> 
