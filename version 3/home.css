@@ -124,7 +124,7 @@ p {
     }       
 }
 
-/* Footer Styles */
+
 footer {
     background-color: #212529;
     color: #ffffff;
@@ -151,7 +151,7 @@ footer .social-links a:hover {
     opacity: 0.8;
 }
 
-/* Dark Mode Footer */
+/* This chnages the colours on the text wehn dark mode is turend on */
 body.dark-mode footer {
     background-color: #343a40;
 }
