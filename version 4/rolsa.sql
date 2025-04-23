@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `users`
+-- Database: `rolsa`
 --
 
 -- --------------------------------------------------------
@@ -27,9 +27,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `login`
 --
 
-CREATE TABLE `login` (
-  `email` int(255) NOT NULL,
-  `password` int(20) NOT NULL
+CREATE TABLE 'login' (
+    'id' INT AUTO_INCREMENT PRIMARY KEY,
+    'email' VARCHAR(255) NOT NULL UNIQUE,
+    'password' VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -39,10 +41,12 @@ CREATE TABLE `login` (
 --
 
 CREATE TABLE `signup` (
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(50) NOT NULL,
+  `last_name` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(100) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 

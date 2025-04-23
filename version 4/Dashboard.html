@@ -156,7 +156,7 @@
 
     <script>
         function calculateFootprint() {
-            //this part is the basically the braibs that do thecalculating
+            // Get input values
             const carTravel = parseFloat(document.getElementById('carTravel').value) || 0;
             const flights = parseFloat(document.getElementById('flights').value) || 0;
             const electricity = parseFloat(document.getElementById('electricity').value) || 0;
@@ -164,22 +164,22 @@
             const meat = parseFloat(document.getElementById('meat').value) || 0;
             const recycling = parseFloat(document.getElementById('recycling').value) || 0;
 
-            
-            const carEmissions = carTravel * 52 * 0.2; 
-            const flightEmissions = flights * 1000; 
-            const electricityEmissions = electricity * 12 * 0.5; 
-            const gasEmissions = gas * 12 * 2; 
-            const meatEmissions = meat * 52 * 5; 
-            const recyclingReduction = recycling * 10; 
+            // Calculate emissions (simplified calculations)
+            const carEmissions = carTravel * 52 * 0.2; // 0.2 kg CO2 per km
+            const flightEmissions = flights * 1000; // 1 tonne per flight (average)
+            const electricityEmissions = electricity * 12 * 0.5; // 0.5 kg CO2 per kWh
+            const gasEmissions = gas * 12 * 2; // 2 kg CO2 per m³
+            const meatEmissions = meat * 52 * 5; // 5 kg CO2 per meat meal
+            const recyclingReduction = recycling * 10; // 10 kg reduction per % recycled
 
-            
+            // Calculate total emissions
             const totalEmissions = (carEmissions + flightEmissions + electricityEmissions + 
-                                  gasEmissions + meatEmissions - recyclingReduction) / 1000; 
+                                  gasEmissions + meatEmissions - recyclingReduction) / 1000; // Convert to tonnes
 
-            
+            // Update result
             document.querySelector('.result').textContent = `${totalEmissions.toFixed(2)} tonnes CO₂e`;
 
-            // This part determines the impact level based on total emissions
+            // Determine impact level
             const impactLevel = document.getElementById('impactLevel');
             if (totalEmissions < 5) {
                 impactLevel.className = 'impact-level impact-low';
@@ -192,7 +192,7 @@
                 impactLevel.textContent = 'High Impact';
             }
 
-            // This part generates recomendations based on how good or bad the users input is
+            // Generate recommendations
             const recommendationsList = document.querySelector('.recommendations-list');
             recommendationsList.innerHTML = '';
             

@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $password = md5($password);
       
      
-     $query = "INSERT INTO 'users' (first_name, last_name, email, password) VALUES ($first_name, $last_name, $email, $md5password)"; 
+     $query = "INSERT INTO 'users' (first_name, last_name, email, password) VALUES ($first_name, $last_name, $email, $password)"; 
      $result = mysqli_query($conn, $query);
      if ($result) {
         echo "Registration successful";
