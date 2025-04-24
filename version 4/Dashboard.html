@@ -45,19 +45,6 @@
         </div>
     </nav>
 
-    
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carbon Footprint Calculator - Rolsa Technologies</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        
-    </style>
-</head>
-<body class="bg-light">
     <div class="container mt-5">
         <h1 class="text-center mb-4">Carbon Footprint Calculator</h1>
         <p class="text-center mb-5">Calculate your environmental impact and learn how to reduce your carbon footprint</p>
@@ -142,7 +129,7 @@
                         <h3 class="mb-4">Annual CO₂ Emissions</h3>
                         <div class="result mb-3">0 tonnes CO₂e</div>
                         <div id="impactLevel" class="impact-level impact-low">Low Impact</div>
-                        <button onclick="calculateFootprint()" class="btn btn-calculate w-100 mt-4">Calculate Impact</button>
+                        <button class="btn btn-calculate w-100 mt-4">Calculate Impact</button>
                         <div id="recommendations" class="mt-4 text-start">
                             <h5>Recommendations:</h5>
                             <ul class="recommendations-list">
@@ -154,80 +141,6 @@
         </div>
     </div>
 
-    <script>
-        function calculateFootprint() {
-            // Get input values
-            const carTravel = parseFloat(document.getElementById('carTravel').value) || 0;
-            const flights = parseFloat(document.getElementById('flights').value) || 0;
-            const electricity = parseFloat(document.getElementById('electricity').value) || 0;
-            const gas = parseFloat(document.getElementById('gas').value) || 0;
-            const meat = parseFloat(document.getElementById('meat').value) || 0;
-            const recycling = parseFloat(document.getElementById('recycling').value) || 0;
-
-            // Calculate emissions (simplified calculations)
-            const carEmissions = carTravel * 52 * 0.2; // 0.2 kg CO2 per km
-            const flightEmissions = flights * 1000; // 1 tonne per flight (average)
-            const electricityEmissions = electricity * 12 * 0.5; // 0.5 kg CO2 per kWh
-            const gasEmissions = gas * 12 * 2; // 2 kg CO2 per m³
-            const meatEmissions = meat * 52 * 5; // 5 kg CO2 per meat meal
-            const recyclingReduction = recycling * 10; // 10 kg reduction per % recycled
-
-            // Calculate total emissions
-            const totalEmissions = (carEmissions + flightEmissions + electricityEmissions + 
-                                  gasEmissions + meatEmissions - recyclingReduction) / 1000; // Convert to tonnes
-
-            // Update result
-            document.querySelector('.result').textContent = `${totalEmissions.toFixed(2)} tonnes CO₂e`;
-
-            // Determine impact level
-            const impactLevel = document.getElementById('impactLevel');
-            if (totalEmissions < 5) {
-                impactLevel.className = 'impact-level impact-low';
-                impactLevel.textContent = 'Low Impact';
-            } else if (totalEmissions < 10) {
-                impactLevel.className = 'impact-level impact-medium';
-                impactLevel.textContent = 'Medium Impact';
-            } else {
-                impactLevel.className = 'impact-level impact-high';
-                impactLevel.textContent = 'High Impact';
-            }
-
-            // Generate recommendations
-            const recommendationsList = document.querySelector('.recommendations-list');
-            recommendationsList.innerHTML = '';
-            
-            if (carTravel > 100) {
-                addRecommendation('Consider using public transport or carpooling to reduce car emissions');
-            }
-            if (flights > 5) {
-                addRecommendation('Try to combine trips or use video conferencing when possible');
-            }
-            if (electricity > 300) {
-                addRecommendation('Switch to energy-efficient appliances and LED lighting');
-            }
-            if (meat > 10) {
-                addRecommendation('Consider reducing meat consumption and trying plant-based alternatives');
-            }
-            if (recycling < 50) {
-                addRecommendation('Increase your recycling efforts to reduce waste impact');
-            }
-        }
-
-        function addRecommendation(text) {
-            const li = document.createElement('li');
-            li.textContent = text;
-            document.querySelector('.recommendations-list').appendChild(li);
-        }
-    </script>
-</body>
-</html>
-    
-    
-    
-    
-    
-    
-    
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -256,10 +169,6 @@
             </div>
         </div>
     </div>
-
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container">
@@ -295,30 +204,8 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('themeToggle');
-            const darkIcon = themeToggle.querySelector('.dark-icon');
-            const lightIcon = themeToggle.querySelector('.light-icon');
-
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                darkIcon.classList.add('d-none');
-                lightIcon.classList.remove('d-none');
-            }
-
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                darkIcon.classList.toggle('d-none');
-                lightIcon.classList.toggle('d-none');
-                
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            });
-        });
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="dashboard.js"></script>
 </body>
 </html>
