@@ -31,7 +31,6 @@ body.dark-mode .btn-outline-dark:hover {
     font-size: 1.2rem;
 }
 
-
 :root {
     --primary-color: #6800fa;
     --text-color: #2d3142;
@@ -58,72 +57,49 @@ body {
     padding: 2rem;
 }
 
-.achievements-section {
-    margin-bottom: var(--section-spacing);
+.card {
+    border: none;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    width: 60px;
-    margin-bottom: 2rem;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-.achievement-card {
-    margin-bottom: var(--section-spacing);
+.card-title {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
-.icon {
-    width: 48px;
-    height: 48px;
-    fill: var(--primary-color);
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
     margin-bottom: 1.5rem;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-}
-
-h2 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-}
-
-p {
-    font-size: 1.125rem;
-    color: #000000;
-    margin-bottom: 2rem;
-    max-width: 600px;
-}
-
-.superscript {
-    font-size: 0.75em;
-    vertical-align: super;
+.img-fluid {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
-    :root {
-        --section-spacing: 4rem;
+    .container {
+        padding: 1rem;
     }
-
+    
     h1 {
         font-size: 2rem;
     }
-
+    
     h2 {
         font-size: 1.75rem;
     }
-
-    p {
-        font-size: 1rem;
-    }       
+    
+    .lead {
+        font-size: 1.1rem;
+    }
 }
-
 
 footer {
     background-color: #212529;
@@ -151,7 +127,6 @@ footer .social-links a:hover {
     opacity: 0.8;
 }
 
-/* This chnages the colours on the text wehn dark mode is turend on */
 body.dark-mode footer {
     background-color: #343a40;
-}
+} 
