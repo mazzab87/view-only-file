@@ -84,8 +84,6 @@
             <p>Since 2015 we've planted 5 million UK trees to help absorb carbon<span class="superscript">3</span> – and create greener spaces for you to enjoy.</p>
         </div>
     </div>
-</body>
-</html> 
 
     <div class="container mt-5">
         <div class="row">
@@ -170,31 +168,10 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('themeToggle');
-            const darkIcon = themeToggle.querySelector('.dark-icon');
-            const lightIcon = themeToggle.querySelector('.light-icon');
-
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                darkIcon.classList.add('d-none');
-                lightIcon.classList.remove('d-none');
-            }
-
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                darkIcon.classList.toggle('d-none');
-                lightIcon.classList.toggle('d-none');
-                
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            });
-        });
-    </script>
+    
 
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="home.js"></script>
 </body>
 </html>
